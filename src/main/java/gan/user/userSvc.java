@@ -34,6 +34,30 @@ public class userSvc {
 		return sqlSession.selectOne("selectUserIdChk",param);
 	}
 
+	public userVO selectUserOne(String param) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("selectUserOne",param);
+	}
+
+	public void updateUserInfo(userVO param) {
+		// TODO Auto-generated method stub
+		 sqlSession.update("updateUserInfo",param);
+	}
+
+	public void deleteUser(String param) {
+		// TODO Auto-generated method stub
+		sqlSession.update("deleteUser",param);
+	}
+
+	public Integer selectUserPwChk(userVO userInfo)  {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("selectUserPwChk",userInfo);
+	}
+
+	public void updatePw(userVO userInfo) {
+		// TODO Auto-generated method stub
+		sqlSession.update("updatePw",userInfo);
+	}
 
 
 }

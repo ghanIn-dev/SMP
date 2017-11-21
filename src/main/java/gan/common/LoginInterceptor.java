@@ -32,7 +32,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         
         try {
             if (session == null || session.getAttribute("userno") == null) {
-                res.sendRedirect("memberLogin"); 
+                res.sendRedirect("userLogin"); 
                 return false;
             }
         } catch (IOException ex) {

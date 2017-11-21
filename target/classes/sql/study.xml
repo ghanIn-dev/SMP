@@ -1,0 +1,39 @@
+<?xl version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="std_group">
+
+	<select id="selectStdList" resultType="gan.study.studyVO">
+		SELECT STDNO,STDTITLE,STDCATEGORI,STDMEMO,STDMEMLIMIT,STDUPDATEDATE
+		FROM TBL_STUDY
+		WHERE DELETEFLAG='N' AND STDSTATUS='P'
+	</select>
+	
+	<select id="selectStdOne" parameterType="String" resultType="gan.study.studyVO">
+		SELECT STDNO,STDTITLE,STDCATEGORI,STDMEMO,STDMEMLIMIT,STDUPDATEDATE,STDMENU
+		FROM TBL_STUDY
+		WHERE STDNO=#{stdno} AND DELETEFLAG='N' AND STDSTATUS='P'
+	</select>
+	
+	<select id="selectMenu" parameterType="gan.study.studyVO" resultType="gan.study.studyMenuVO">
+		SELECT MENUNUM,MENUNAME
+		FROM STD_MENU		
+		WHERE MENUNUM IN 
+		 <foreach item="item" index="index" collection="menuarr" open="(" separator="," close=")">
+			        #{item}
+		 </foreach>
+	</select>
+	
+	<insert id="insertStd" parameterType="gan.study.studyVO">
+		INSERT INTO TBL_STUDY(STDTITLE,STDCATEGORI,STDMEMO,STDMEMLIMIT,STDSTARTDATE,STDSTATUS,DELETEFLAG,STDMENU)
+		VALUES (#{stdtitle},#{stdcategori},#{stdmemo},#{stdmemlimit},NOW(),'P','N',#{stdmenu})	
+	</insert>
+	
+	<update id="delStd" parameterType="String">
+		UPDATE TBL_STUDY
+		SET DELETEFLAG='Y',
+			STDENDDATE=NOW()
+		WHERE STDNO=#{stdno}
+	</update>
+
+</mapper>	

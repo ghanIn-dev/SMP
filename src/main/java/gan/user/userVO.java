@@ -4,7 +4,15 @@ public class userVO {
 
 	private String userno;
 	private String userid;
-	private String userpw;
+	private String userpw,userpwchg;
+	public String getUserpwchg() {
+		return userpwchg;
+	}
+
+	public void setUserpwchg(String userpwchg) {
+		this.userpwchg = userpwchg;
+	}
+
 	private String usernm;
 	private String userloc;
 	private String usertel;

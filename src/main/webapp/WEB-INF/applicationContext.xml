@@ -13,7 +13,7 @@
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
-    <context:component-scan base-package="gu"/>
+    <context:component-scan base-package="gan"/>
     
     <!-- 
     p:driverClassName="com.mysql.jdbc.Driver" p:url="jdbc:mysql://localhost/board"   
