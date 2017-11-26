@@ -22,10 +22,51 @@
 <link href="css/sb-admin/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
 <link href="js/dynatree/ui.dynatree.css" rel="stylesheet" />
-
+<script src="js/project9.js"></script>
 
 <script>
+
+function chkFlag(id, msg) {
+	if ($.trim($(id).val()) == 'N') {
+		alert(msg + "를 확인해보세요.");
+		return false;
+	}
+	return true;
+}
+
+function checkNm() {
+	var nmrex = new RegExp("^[a-zA-Z가-힣]{2,12}$", "g");
+
+	if (!nmrex.test($('#usernm').val())) {
+		$('#nmcheckFlag').val("N");
+		$('#nmcheckMsg').html(
+				'<p style="color:red">이름은 한글이나 영어 2~20자 이내로 가능합니다. </p>');
+		$('#usernm').focus();
+	} else {
+		$('#nmcheckFlag').val("Y");
+		$('#nmcheckMsg').html('<p style="color:blue">사용가능한 이름 입니다.</p>');
+	}
+}
+
+function checkTel() {
+	var telrex = new RegExp("^[0-9]+$", "g");
+
+	if (!telrex.test($('#usertel').val())) {
+		$('#telcheckFlag').val("N");
+		$('#telcheckMsg').html(
+				'<p style="color:red">번호는 숫자만 입력이 가능합니다. </p>');
+		$('#usertel').focus();
+	} else {
+		$('#telcheckFlag').val("Y");
+		$('#telcheckMsg').html('<p style="color:blue">사용가능한 번호 입니다.</p>');
+	}
+}
+
 function fn_formSubmit() {
+	if (!chkInputValue("#usernm", "name는 필수입력입니다."))
+		return false;
+	if (!chkFlag("#nmcheckFlag", "nmcheckFlag"))
+		return false;
 	
 	$("#form1").submit();
 }
@@ -74,7 +115,7 @@ function fn_formSubmit() {
 					<div class="form-group">
 						<label for="inputNumber" class="col-sm-2 control-label">휴대폰번호</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" id="usertel"
+							<input type="text" class="form-control" id="usertel" oninput="checkTel()"
 								name="usertel" placeholder="휴대폰번호 - 없이 적어주세요."
 								value="${userInfo.usertel}"> 
 								<input type="hidden" id="userno" name="userno" value="${userInfo.userno }" />
