@@ -31,7 +31,7 @@
 
 		<div id="page-wrapper">
 			<div class="row">
-			<a href="studyForm" class="btn btn-outline btn-primary btn-lg" >스터디 생성</a>
+			
 				<div class="col-lg-6">
 					<h1 class="page-header">Dashboard</h1>
 				</div>
@@ -47,6 +47,7 @@
 							<th>id</th>
 							<th>name</th>
 							<th>Autority</th>
+							<th>#</tr>
 						<tr>
 					</thead>
 					
@@ -56,7 +57,8 @@
 							 	<td><c:out value="${status.count}" /></td>
 								<td><c:out value="${userlist.userid}" /></td>
 								<td><c:out value="${userlist.usernm}" /></td>
-								<td><c:out value="${userlist.usernm}" /></td>
+								<td><c:out value="${userlist.userrole}" /></td>
+								<td><a href="adminUserDel?userno=${userlist.userno}" class="btn btn-outline btn-primary" >삭제</a></td>
 							 </tr>
 						</c:forEach>
 					</tbody>

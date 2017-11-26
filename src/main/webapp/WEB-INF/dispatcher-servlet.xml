@@ -26,6 +26,10 @@
 	       <mvc:exclude-mapping path="/css/**"/> 
 	       <bean class="gan.common.LoginInterceptor"/>
 	    </mvc:interceptor>
+	    <mvc:interceptor>
+	       <mvc:mapping path="/ad*"/>  
+	       <bean class="gan.common.AdminInterceptor"/>
+	    </mvc:interceptor>
 	</mvc:interceptors>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

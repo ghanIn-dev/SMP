@@ -16,4 +16,9 @@ public class adminSvc {
 		return sqlSession.selectList("selectAdUserList");
 	}
 
+	public void deleteAdUser(String param) {
+		// TODO Auto-generated method stub
+		sqlSession.selectList("deleteAdUser",param);
+	}
+
 }

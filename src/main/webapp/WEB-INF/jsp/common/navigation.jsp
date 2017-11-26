@@ -82,9 +82,13 @@
 	                                	}
 	                                </script>                            <!-- /input-group -->
                         </li>
-                        <li>
-                            <a href="adminUserList"><i class="fa fa-files-o fa-fw"></i> 사용자 관리 </a>
-                        </li>
+                        
+                        <c:if test='${sessionScope.userrole == "A"}'>
+	                        <li>
+	                            <a href="adminUserList"><i class="fa fa-files-o fa-fw"></i> 사용자 관리 </a>
+	                        </li>
+                        </c:if>
+                        
                         <li>
                             <a href="studyList"><i class="fa fa-files-o fa-fw"></i> 스터디 리스트 </a>
                         </li>

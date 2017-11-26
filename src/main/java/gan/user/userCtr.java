@@ -24,7 +24,7 @@ public class userCtr {
 		return "user/userPwUpdate";
 	}
 	
-	@RequestMapping(value = "/userDel") // 회원가입 저장
+	@RequestMapping(value = "/userDel") // 회원 탈퇴
 	public String userupdatesave(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String userno = session.getAttribute("userno").toString();

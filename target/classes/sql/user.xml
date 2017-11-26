@@ -21,8 +21,8 @@
     </insert>
     
     <insert id="insertUserJoin" parameterType="gan.user.userVO">
-    	INSERT INTO TBL_USER(USERID,USERPW,USEREMAIL,USERNM,USERTEL,DELETEFLAG)
-        VALUES(#{userid},SHA2(#{userpw}, 256),CONCAT(#{useremail},'@',#{useremail2}),#{usernm},#{usertel},'N')
+    	INSERT INTO TBL_USER(USERID,USERPW,USERROLE,USEREMAIL,USERNM,USERTEL,DELETEFLAG)
+        VALUES(#{userid},SHA2(#{userpw}, 256),'U',CONCAT(#{useremail},'@',#{useremail2}),#{usernm},#{usertel},'N')
     </insert>
     
     <select id="selectUserIdChk" parameterType="String" resultType="Integer">
