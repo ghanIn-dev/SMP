@@ -5,49 +5,49 @@
 
 	<select id="selectUserLogin" parameterType="gan.user.LoginVO" resultType="gan.user.userVO">
 		SELECT *
-		  FROM TBL_USER U
+		  FROM COM_USER U
 		 WHERE U.DELETEFLAG='N' AND
 		       U.USERID=#{userid} AND U.USERPW=SHA2(#{userpw}, 256)
 	</select>
     
     <insert id="insertLogIn" parameterType="String">
-    	INSERT INTO TBL_USERLOG(USERNO, LTYPE, LDATE)
+    	INSERT INTO COM_USERLOG(USERNO, LTYPE, LDATE)
     				  	 VALUES(#{userno},'I',NOW())
     </insert>
         
     <insert id="insertLogOut" parameterType="String">
-    	INSERT INTO TBL_USERLOG(USERNO, LTYPE, LDATE)
+    	INSERT INTO COM_USERLOG(USERNO, LTYPE, LDATE)
     				  	 VALUES(#{userno},'O',NOW())
     </insert>
     
     <insert id="insertUserJoin" parameterType="gan.user.userVO">
-    	INSERT INTO TBL_USER(USERID,USERPW,USERROLE,USEREMAIL,USERNM,USERTEL,DELETEFLAG)
+    	INSERT INTO COM_USER(USERID,USERPW,USERROLE,USEREMAIL,USERNM,USERTEL,DELETEFLAG)
         VALUES(#{userid},SHA2(#{userpw}, 256),'U',CONCAT(#{useremail},'@',#{useremail2}),#{usernm},#{usertel},'N')
     </insert>
     
     <select id="selectUserIdChk" parameterType="String" resultType="Integer">
     	SELECT COUNT(*)
-    	  FROM TBL_USER U
+    	  FROM COM_USER U
     	 WHERE U.DELETEFLAG='N' AND 
     	 	   U.USERID = #{userid}
     </select>
     
      <select id="selectUserPwChk" parameterType="gan.user.userVO" resultType="Integer">
     	SELECT COUNT(*)
-    	  FROM TBL_USER U
+    	  FROM COM_USER U
     	 WHERE U.DELETEFLAG='N' AND U.USERNO=#{userno} AND
     	 	   U.USERPW=SHA2(#{userpw}, 256)
     </select>
     
      <select id="selectUserOne" parameterType="String" resultType="gan.user.userVO">
 		SELECT *
-		  FROM TBL_USER U
+		  FROM COM_USER U
 		 WHERE U.DELETEFLAG='N' AND
 		       U.USERNO=#{userno} 
 	</select>
     
     <update id="updateUserInfo" parameterType="gan.user.userVO">
-    	UPDATE TBL_USER U
+    	UPDATE COM_USER U
            SET U.USERNM=#{usernm},
            	   U.USERTEL=#{usertel}
          WHERE U.DELETEFLAG='N'
@@ -55,7 +55,7 @@
     </update>
     
       <update id="updatePw" parameterType="gan.user.userVO">
-    	UPDATE TBL_USER U
+    	UPDATE COM_USER U
            SET U.USERPW=SHA2(#{userpwchg}, 256)
            	   
          WHERE U.DELETEFLAG='N'
@@ -63,7 +63,7 @@
     </update>
     
       <update id="deleteUser" parameterType="gan.user.userVO">
-    	UPDATE TBL_USER U
+    	UPDATE COM_USER U
            SET U.DELETEFLAG="Y"
          WHERE U.DELETEFLAG='N'
            AND U.USERNO=#{userno}

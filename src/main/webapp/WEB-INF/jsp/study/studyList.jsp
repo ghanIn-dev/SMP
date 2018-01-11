@@ -76,7 +76,7 @@
 									<c:out value="${listview.stdmemo}"/>
 								</p>
 							</div>
-							<a href="studyRead?stdno=<c:out value="${listview.stdno}"/>">
+							<a href="studyRead?userno=<c:out value="${sessionScope.userno}"/>&stdno=<c:out value="${listview.stdno}"/>">
 								<div class="panel-footer">
 									<span class="pull-left">View Details</span> <span
 										class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

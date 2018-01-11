@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	<select id="selectMemList" parameterType="gan.member.memberVO" resultType="gan.member.memberVO">
+		SELECT USERNO,MEMROLE,MEMFROM,STDNO
+		  FROM MEM_MEMBER M
+		 WHERE M.STDNO=#{stdno}
+	</select>
+	
+	<insert id="requestJoinMem" parameterType="gan.study.studyVO">
+		INSERT INTO MEM_MEMBER(USERNO,STDNO,MEMROLE,MEMFROM,MEMEND)
+		VALUES (#{userno},#{stdno},'W',NOW(),0)	
+	</insert>
+    
+    <update id="acceptJoinMem" parameterType="gan.study.studyVO">
+		UPDATE MEM_MEMBER
+		SET MEMROLE='SM'			
+		WHERE STDNO=#{stdno} AND USERNO=#{userno}
+	</update>
+</mapper>
+

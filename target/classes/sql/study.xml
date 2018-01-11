@@ -2,16 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 
 <mapper namespace="std_group">
+	<select id="selectMemOne" parameterType="gan.member.memberVO" resultType="gan.member.memberVO">
+		SELECT MEMROLE
+		FROM MEM_MEMBER
+		WHERE USERNO=#{userno} AND STDNO=#{stdno}
+	</select>
 
 	<select id="selectStdList" resultType="gan.study.studyVO">
 		SELECT STDNO,STDTITLE,STDCATEGORI,STDMEMO,STDMEMLIMIT,STDUPDATEDATE
-		FROM TBL_STUDY
+		FROM STD_STUDY
 		WHERE DELETEFLAG='N' AND STDSTATUS='P'
 	</select>
 	
 	<select id="selectStdOne" parameterType="String" resultType="gan.study.studyVO">
 		SELECT STDNO,STDTITLE,STDCATEGORI,STDMEMO,STDMEMLIMIT,STDUPDATEDATE,STDMENU
-		FROM TBL_STUDY
+		FROM STD_STUDY
 		WHERE STDNO=#{stdno} AND DELETEFLAG='N' AND STDSTATUS='P'
 	</select>
 	
@@ -25,12 +30,20 @@
 	</select>
 	
 	<insert id="insertStd" parameterType="gan.study.studyVO">
-		INSERT INTO TBL_STUDY(STDTITLE,STDCATEGORI,STDMEMO,STDMEMLIMIT,STDSTARTDATE,STDSTATUS,DELETEFLAG,STDMENU)
-		VALUES (#{stdtitle},#{stdcategori},#{stdmemo},#{stdmemlimit},NOW(),'P','N',#{stdmenu})	
+		INSERT INTO STD_STUDY(STDTITLE,STDCATEGORI,STDMEMO,STDMEMLIMIT,STDSTARTDATE,STDSTATUS,DELETEFLAG,STDMENU,USERNO)
+		VALUES (#{stdtitle},#{stdcategori},#{stdmemo},#{stdmemlimit},NOW(),'P','N',#{stdmenu},#{userno})
+	    <selectKey resultType="string" keyProperty="stdno" order="AFTER">
+        	SELECT LAST_INSERT_ID()        
+    	</selectKey>	
+	</insert>
+	
+	<insert id="joinMem" parameterType="gan.study.studyVO">
+		INSERT INTO MEM_MEMBER(USERNO,STDNO,MEMROLE,MEMFROM,MEMEND)
+		VALUES (#{userno},#{stdno},'SA',NOW(),0)	
 	</insert>
 	
 	<update id="delStd" parameterType="String">
-		UPDATE TBL_STUDY
+		UPDATE STD_STUDY
 		SET DELETEFLAG='Y',
 			STDENDDATE=NOW()
 		WHERE STDNO=#{stdno}

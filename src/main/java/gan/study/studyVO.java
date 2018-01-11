@@ -14,7 +14,16 @@ public class studyVO {
 	stdupdateadmin,//그룹 수정자
 	stdstatus, // 그룹 공개여부
 	deleteflag, // 삭제코드
-	menuarr;
+	menuarr,
+	userno; //스터디 장
+
+	public String getUserno() {
+		return userno;
+	}
+
+	public void setUserno(String userno) {
+		this.userno = userno;
+	}
 
 	public String getMenuarr() {
 		return menuarr;

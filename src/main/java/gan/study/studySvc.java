@@ -6,10 +6,12 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import gan.member.memberVO;
+
 @Service
 public class studySvc {
 	@Autowired
-	SqlSessionTemplate sqlSession;
+	private SqlSessionTemplate sqlSession;
 
 	public List<?> selectStdList() {
 		// TODO Auto-generated method stub
@@ -36,4 +38,11 @@ public class studySvc {
 		// TODO Auto-generated method stub
 		sqlSession.delete("delStd",param);
 	}
+
+	public void joinMem(studyVO param) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("joinMem",param);
+	}
+	
+
 }

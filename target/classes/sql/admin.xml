@@ -3,13 +3,13 @@
 
 <mapper namespace="admin">
 	<select id="selectAdUserList" resultType="gan.user.userVO">
-		SELECT USERNO,USERID, USERNM,USERROLE
-		  FROM TBL_USER U
+		SELECT USERNO,USERID,USERNM,USERROLE
+		  FROM COM_USER U
 		 WHERE U.DELETEFLAG='N' 
 	</select>
 
 	<delete id="deleteAdUser" parameterType="String">
-		UPDATE TBL_USER U
+		UPDATE COM_USER U
            SET U.DELETEFLAG="Y"
          WHERE U.DELETEFLAG='N'
            AND U.USERNO=#{userno}

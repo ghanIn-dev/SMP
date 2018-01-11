@@ -36,11 +36,7 @@
 			</div>
 
 			<form action="studyFormSave" method="post">
-				<div class="form-group">
 
-					<label>작성자</label>
-					<p class="form-control-static">email@example.com</p>
-				</div>
 				<div class="form-group">
 					<label>스터디 제목</label> <input class="form-control" name="stdtitle" value="<c:out value="${studyInfo.stdtitle }"/>">
 				</div>
@@ -93,7 +89,7 @@
 						</label>
 					</div>
 				</div>
-
+				<input type="hidden" name="userno" value="">
 				<button type="submit" class="btn btn-default">확인</button>
 			</form>
 			
