@@ -11,12 +11,12 @@
 	</select>
     
     <insert id="insertLogIn" parameterType="String">
-    	INSERT INTO COM_USERLOG(USERNO, LTYPE, LDATE)
+    	INSERT INTO COM_LOGINOUT(USERNO, LTYPE, LDATE)
     				  	 VALUES(#{userno},'I',NOW())
     </insert>
         
     <insert id="insertLogOut" parameterType="String">
-    	INSERT INTO COM_USERLOG(USERNO, LTYPE, LDATE)
+    	INSERT INTO COM_LOGINOUT(USERNO, LTYPE, LDATE)
     				  	 VALUES(#{userno},'O',NOW())
     </insert>
     

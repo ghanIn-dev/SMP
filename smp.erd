@@ -23,8 +23,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>255</x>
-        <y>158</y>
+        <x>253</x>
+        <y>179</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -181,8 +181,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>16</x>
-        <y>197</y>
+        <x>38</x>
+        <y>184</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -351,8 +351,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>627</x>
-        <y>169</y>
+        <x>438</x>
+        <y>316</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -461,8 +461,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>626</x>
-        <y>43</y>
+        <x>437</x>
+        <y>176</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -539,7 +539,7 @@
   </children>
   <dommains/>
   <dialectName>MySQL</dialectName>
-  <logicalMode>true</logicalMode>
+  <logicalMode>false</logicalMode>
   <jarFile>/Users/seokhyun/.m2/repository/mysql/mysql-connector-java/5.1.6/mysql-connector-java-5.1.6.jar</jarFile>
   <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
   <jdbcUrl>jdbc:mysql://localhost/smp</jdbcUrl>
