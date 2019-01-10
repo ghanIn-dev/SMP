@@ -112,4 +112,5 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script src="css/sb-admin/sb-admin-2.js"></script>
+	</body>
 </html>
